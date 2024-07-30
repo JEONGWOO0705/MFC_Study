@@ -35,4 +35,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedBtnDlg();
+	afx_msg void OnDestroy();
 };

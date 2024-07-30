@@ -14,7 +14,7 @@ IMPLEMENT_DYNAMIC(CDlgImage, CDialogEx)
 CDlgImage::CDlgImage(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_CDlgImage, pParent)
 {
-
+	m_pParent = pParent;
 }
 
 CDlgImage::~CDlgImage()
@@ -32,3 +32,4 @@ END_MESSAGE_MAP()
 
 
 // CDlgImage 메시지 처리기
+

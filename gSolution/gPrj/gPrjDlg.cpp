@@ -68,6 +68,7 @@ BEGIN_MESSAGE_MAP(CgPrjDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDC_BTN_DLG, &CgPrjDlg::OnBnClickedBtnDlg)
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -164,5 +165,15 @@ HCURSOR CgPrjDlg::OnQueryDragIcon()
 
 void CgPrjDlg::OnBnClickedBtnDlg()
 {
-	;
+	m_pDlgImage->ShowWindow(SW_SHOW);
+
+}
+
+
+void CgPrjDlg::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	delete m_pDlgImage;
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
 }
