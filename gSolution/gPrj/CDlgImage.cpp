@@ -6,6 +6,7 @@
 #include "afxdialogex.h"
 #include "CDlgImage.h"
 
+#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
 
 // CDlgImage 대화 상자
 
@@ -28,8 +29,17 @@ void CDlgImage::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CDlgImage, CDialogEx)
+	ON_BN_CLICKED(IDC_BTN_UP_PARENT, &CDlgImage::OnBnClickedBtnUpParent)
 END_MESSAGE_MAP()
 
 
 // CDlgImage 메시지 처리기
 
+
+#include "gPrjDlg.h"
+void CDlgImage::OnBnClickedBtnUpParent()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CgPrjDlg* pDlg = (CgPrjDlg*)m_pParent;
+	pDlg->callFund(123);
+}

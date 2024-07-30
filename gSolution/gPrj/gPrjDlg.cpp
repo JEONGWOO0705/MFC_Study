@@ -8,6 +8,8 @@
 #include "gPrjDlg.h"
 #include "afxdialogex.h"
 #include "CDlgImage.h"
+#include<iostream>
+
 
 
 #ifdef _DEBUG
@@ -177,3 +179,8 @@ void CgPrjDlg::OnDestroy()
 	delete m_pDlgImage;
 	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
 }
+
+void CgPrjDlg::callFund(int n) {
+	//int nData = n;
+	std::cout << n << std::endl;
+}	

@@ -9,7 +9,6 @@
 #define IDD_CDlgImage                   103
 #define IDR_MAINFRAME                   128
 #define IDC_BTN_DLG                     1001
-#define IDC_BUTTON1                     1002
 #define IDC_BTN_UP_PARENT               1002
 
 // Next default values for new objects
