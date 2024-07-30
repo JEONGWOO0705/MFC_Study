@@ -69,7 +69,6 @@ BEGIN_MESSAGE_MAP(CgPrjDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDC_BTN_DLG, &CgPrjDlg::OnBnClickedBtnDlg)
 	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
@@ -106,7 +105,7 @@ BOOL CgPrjDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-
+	MoveWindow(0, 0, 1280, 800); // window 크기
 	m_pDlgImage = new CDlgImage;
 	m_pDlgImage->Create(IDD_CDlgImage,this);
 	m_pDlgImage->ShowWindow(SW_SHOW);
@@ -165,11 +164,11 @@ HCURSOR CgPrjDlg::OnQueryDragIcon()
 
 
 
-void CgPrjDlg::OnBnClickedBtnDlg()
-{
-	m_pDlgImage->ShowWindow(SW_SHOW);
-
-}
+//void CgPrjDlg::OnBnClickedBtnDlg()
+//{
+//	m_pDlgImage->ShowWindow(SW_SHOW);
+//
+//}
 
 
 void CgPrjDlg::OnDestroy()

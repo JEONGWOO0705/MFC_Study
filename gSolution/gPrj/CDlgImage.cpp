@@ -6,7 +6,7 @@
 #include "afxdialogex.h"
 #include "CDlgImage.h"
 
-#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
+//#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
 
 // CDlgImage 대화 상자
 
@@ -30,6 +30,7 @@ void CDlgImage::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CDlgImage, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_UP_PARENT, &CDlgImage::OnBnClickedBtnUpParent)
+	ON_WM_PAINT()
 END_MESSAGE_MAP()
 
 
@@ -40,6 +41,51 @@ END_MESSAGE_MAP()
 void CDlgImage::OnBnClickedBtnUpParent()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	static int n = 100;
 	CgPrjDlg* pDlg = (CgPrjDlg*)m_pParent;
-	pDlg->callFund(123);
+	pDlg->callFund(n++);
+}
+
+
+BOOL CDlgImage::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+
+	
+	// TODO:  여기에 추가 초기화 작업을 추가합니다.
+	MoveWindow(0, 0, 640,480);
+	initImage();
+	
+	return TRUE;  // return TRUE unless you set the focus to a control
+	// 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
+}
+
+
+void CDlgImage::OnPaint()
+{
+	CPaintDC dc(this); // device context for painting
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+	// 그리기 메시지에 대해서는 CDialogEx::OnPaint()을(를) 호출하지 마십시오.
+
+	if (m_image) {
+		m_image.Draw(dc,0, 0);
+	}
+}
+
+void CDlgImage::initImage() {
+	int nWidth = 640;
+	int nHeight = 480;
+	int nBpp = 8;
+
+	m_image.Create(nWidth, -nHeight, nBpp);
+	if (nBpp == 8) {
+		static RGBQUAD rgb[256];
+		for (int i = 0; i < 256; i++)
+			rgb[i].rgbRed = rgb[i].rgbGreen = rgb[i].rgbBlue = i;
+		m_image.SetColorTable(0, 256, rgb);
+	}
+	int nPitch = m_image.GetPitch();
+	unsigned char* fm = (unsigned char*)m_image.GetBits(); // 이미지으 첫번째 포인터를 가져온다
+
+	memset(fm, 0xff, sizeof(unsigned char) * nWidth * nHeight);
 }
